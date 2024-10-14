@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "kranthiDATAprocess"
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks_accessToken": {
+			"value": ""
+		},
+		"Snowflake_password": {
+			"value": ""
+		},
+		"onpremSQL_password": {
+			"value": ""
+		},
+		"paramSql_password": {
+			"value": ""
+		},
+		"snowflakelinkservice_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://kranthipractise.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://kranthipractise.dfs.core.windows.net/"
+		},
+		"AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"value": "0926-142807-5yev30y1"
+		},
+		"Snowflake_properties_typeProperties_database": {
+			"value": "KRANTHIDB"
+		},
+		"onpremSQL_properties_typeProperties_server": {
+			"value": "KRANTHI"
+		},
+		"onpremSQL_properties_typeProperties_database": {
+			"value": "AdventureWorks2022"
+		},
+		"onpremSQL_properties_typeProperties_userName": {
+			"value": "vadan"
+		},
+		"paramSql_properties_typeProperties_server": {
+			"value": "KRANTHI"
+		},
+		"paramSql_properties_typeProperties_database": {
+			"value": "@{linkedService().DBname}"
+		},
+		"paramSql_properties_typeProperties_userName": {
+			"value": "vadan"
+		},
+		"snowflakestaging_sasUri": {
+			"value": ""
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

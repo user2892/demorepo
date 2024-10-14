@@ -1,0 +1,188 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "kranthiDATAprocess"
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks'"
+		},
+		"Snowflake_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Snowflake'"
+		},
+		"onpremSQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'onpremSQL'"
+		},
+		"paramSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'paramSql'"
+		},
+		"snowflakelinkservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'snowflakelinkservice'"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://kranthipractise.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://kranthipractise.dfs.core.windows.net/"
+		},
+		"AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0926-142807-5yev30y1"
+		},
+		"Snowflake_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "KRANTHIDB"
+		},
+		"onpremSQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "KRANTHI"
+		},
+		"onpremSQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2022"
+		},
+		"onpremSQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "vadan"
+		},
+		"paramSql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "KRANTHI"
+		},
+		"paramSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().DBname}"
+		},
+		"paramSql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "vadan"
+		},
+		"snowflakestaging_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'snowflakestaging'"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "kranthiDATAprocess_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage_accountKey')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDatabricks_accessToken": {
+						"value": "[parameters('AzureDatabricks_accessToken')]"
+					},
+					"Snowflake_password": {
+						"value": "[parameters('Snowflake_password')]"
+					},
+					"paramSql_password": {
+						"value": "[parameters('paramSql_password')]"
+					},
+					"snowflakelinkservice_connectionString": {
+						"value": "[parameters('snowflakelinkservice_connectionString')]"
+					},
+					"onpremSQL_password": {
+						"value": "[parameters('onpremSQL_password')]"
+					},
+					"AzureDataLakeStorage_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
+					"Snowflake_properties_typeProperties_database": {
+						"value": "[parameters('Snowflake_properties_typeProperties_database')]"
+					},
+					"paramSql_properties_typeProperties_server": {
+						"value": "[parameters('paramSql_properties_typeProperties_server')]"
+					},
+					"paramSql_properties_typeProperties_database": {
+						"value": "[parameters('paramSql_properties_typeProperties_database')]"
+					},
+					"paramSql_properties_typeProperties_userName": {
+						"value": "[parameters('paramSql_properties_typeProperties_userName')]"
+					},
+					"snowflakestaging_sasUri": {
+						"value": "[parameters('snowflakestaging_sasUri')]"
+					},
+					"onpremSQL_properties_typeProperties_server": {
+						"value": "[parameters('onpremSQL_properties_typeProperties_server')]"
+					},
+					"onpremSQL_properties_typeProperties_database": {
+						"value": "[parameters('onpremSQL_properties_typeProperties_database')]"
+					},
+					"onpremSQL_properties_typeProperties_userName": {
+						"value": "[parameters('onpremSQL_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "kranthiDATAprocess_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'kranthiDATAprocess_ArmTemplate_0')]"
+			]
+		}
+	]
+}
