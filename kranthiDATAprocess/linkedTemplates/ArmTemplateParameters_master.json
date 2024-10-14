@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "kranthiDATAprocess"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage_accountKey": {
 			"value": ""
 		},
