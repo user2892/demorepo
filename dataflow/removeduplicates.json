@@ -1,0 +1,76 @@
+{
+	"name": "removeduplicates",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "employeecsv",
+						"type": "DatasetReference"
+					},
+					"name": "employee"
+				},
+				{
+					"dataset": {
+						"referenceName": "employee2csv",
+						"type": "DatasetReference"
+					},
+					"name": "employee2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CSVfiles",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "union",
+					"description": "Combining rows from transformation 'employee' with employee2"
+				},
+				{
+					"name": "removeDuplicaterows"
+				},
+				{
+					"name": "sortbyempid"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          empid as string,",
+				"          empname as string,",
+				"          country as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> employee",
+				"source(output(",
+				"          empid as string,",
+				"          empname as string,",
+				"          country as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> employee2",
+				"employee, employee2 union(byName: true)~> union",
+				"union aggregate(groupBy(empid),",
+				"     each(match(name!=\"empid\"), $$ = first($$))) ~> removeDuplicaterows",
+				"removeDuplicaterows sort(asc(empid, true)) ~> sortbyempid",
+				"sortbyempid sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
+			]
+		}
+	}
+}

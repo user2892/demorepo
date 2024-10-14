@@ -1,0 +1,27 @@
+{
+	"name": "SQlserver",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "onpremSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fname",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "citizen"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

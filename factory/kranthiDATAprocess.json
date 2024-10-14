@@ -1,0 +1,9 @@
+{
+	"name": "kranthiDATAprocess",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "89e78daf-6d42-4a88-9c09-68ab793be237",
+		"tenantId": "b3a5b9b8-babc-4336-98c5-779646d33b8b"
+	}
+}

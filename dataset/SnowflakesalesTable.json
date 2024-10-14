@@ -1,0 +1,54 @@
+{
+	"name": "SnowflakesalesTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [
+			{
+				"name": "SALES_ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "PRODUCT_NAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "SALES_DATE",
+				"type": "DATE"
+			},
+			{
+				"name": "QUANTITY_SOLD",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "PRICE_PER_UNIT",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "TOTAL_AMOUNT",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "CUSTOMER_NAME",
+				"type": "VARCHAR"
+			}
+		],
+		"typeProperties": {
+			"schema": "DEMOSCHEMA",
+			"table": "SALES"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
